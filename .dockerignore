@@ -1,0 +1,10 @@
+# flyctl launch added from .gitignore
+**/__pycache__
+**/.pytest_cache
+**/htmlcov
+**/.coverage
+**/.venv
+**/log.html
+**/report.html
+**/output.xml
+fly.toml
