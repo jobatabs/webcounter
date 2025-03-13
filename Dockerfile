@@ -4,14 +4,14 @@ WORKDIR /usr/src/app
 
 EXPOSE 5001
 
-RUN pip install poetry
-
-COPY pyproject.toml .
-
-COPY poetry.lock .
-
-RUN poetry install --no-root
+RUN pip install poetry && addgroup app && adduser -S -G app app
 
 COPY . .
+
+RUN chown -R app:app .
+
+USER app
+
+RUN poetry install --no-root
 
 CMD poetry run python3 src/index.py
